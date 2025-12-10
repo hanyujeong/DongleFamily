@@ -1,31 +1,49 @@
+﻿using JetBrains.Annotations;
 using UnityEngine;
 
 public class Dongle : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public bool isDrag;
+    Rigidbody2D rigid;
+
+    private void Awake()
     {
-        
+        rigid = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    // ✅ 올바른 Update 메서드 (클래스 내부)
     void Update()
-    {// x position follows mouse position with borders
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float leftBorder = -4.2f + transform.localScale.x / 2f;
-        float rightBorder = 4.2f - transform.localScale.x / 2f;
-
-        if (mousePos.x < leftBorder)
+    {
+        if (isDrag)
         {
-            mousePos.x = leftBorder;
-        }
-        else if (mousePos.x > rightBorder)
-        {
-            mousePos.x = rightBorder;
-        }
-        mousePos.y = 8;
-        mousePos.z = 0; // Set z to 0 to keep the object in the 2D plane
-        transform.position = Vector3.Lerp(transform.position, mousePos, 0.2f);
+            // x position follows mouse position with borders
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float leftBorder = -4.2f + transform.localScale.x / 2f;
+            float rightBorder = 4.2f - transform.localScale.x / 2f;
 
+            if (mousePos.x < leftBorder)
+            {
+                mousePos.x = leftBorder;
+            }
+            else if (mousePos.x > rightBorder)
+            {
+                mousePos.x = rightBorder;
+            }
+            mousePos.y = 8;
+            mousePos.z = 0;
+            transform.position = Vector3.Lerp(transform.position, mousePos, 0.2f);
+        }
+       
+    }
+
+    public void Drag()
+    {
+        isDrag = true;
+    }
+
+    public void Drop()
+    {
+        isDrag = false;
+        rigid.simulated = true;
     }
 }
