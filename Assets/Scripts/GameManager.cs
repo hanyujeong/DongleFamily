@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -22,11 +23,25 @@ public class GameManager : MonoBehaviour
     {
         Dongle newDongle = GetDongle();
         lastDongle = newDongle;
+
+        StartCoroutine("WaitNext");
     }
 
+    IEnumerator WaitNext()
+    {     
+        while (lastDongle != null)
+        {
+            yield return null;
+        }
+       
+        yield return new WaitForSeconds(2.5f);
+        
+        NextDongle();
+    }
 
     public void TouchDown()
-    {   if(lastDongle == null) 
+    {
+        if (lastDongle == null)
             return;
 
         lastDongle.Drag();
