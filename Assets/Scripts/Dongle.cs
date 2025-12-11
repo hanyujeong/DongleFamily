@@ -10,7 +10,7 @@ public class Dongle : MonoBehaviour
     public bool isDrag;
     public bool isMerge;
 
-    Rigidbody2D rigid;
+    public Rigidbody2D rigid;
     CircleCollider2D circle;
     Animator anim;
     SpriteRenderer spriteRenderer;
@@ -99,6 +99,11 @@ public class Dongle : MonoBehaviour
         rigid.simulated = false;
         circle.enabled = false;
 
+        if (targetPos == Vector3.up * 100)
+        {
+            EffectPlay();
+        }
+
         StartCoroutine(HideRoutine(targetPos));
 
     }
@@ -110,8 +115,15 @@ public class Dongle : MonoBehaviour
         while (frameCount < 20)
         {
             frameCount++;
-            transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
-            yield return null;
+            if (targetPos != Vector3.up * 100)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
+            }
+            else if (targetPos == Vector3.up * 100)
+            {
+                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, 0.2f);
+            }
+                yield return null;
         }
 
         manager.score += (int)Mathf.Pow(2, level);
@@ -158,8 +170,16 @@ public class Dongle : MonoBehaviour
                 manager.GameOver();
             }
         }
-
         
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Finish")
+        {
+            deadTime = 0;
+            spriteRenderer.color = Color.white;
+        }
     }
     void EffectPlay()
     {

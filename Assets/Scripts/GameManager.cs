@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int score;
     public int maxLevel = 8;
+    public bool isOver;
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -77,6 +78,29 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("게임 오버!");
+        if (isOver)
+            return;
+
+        isOver = true;
+        StartCoroutine("GameOverRoutine");
     }
+
+    IEnumerator GameOverRoutine()
+    {
+        // 1. 장면 안에 활성화 되어있는 모든 동글 가져오기
+        Dongle[] dongles = FindObjectsByType<Dongle>(FindObjectsSortMode.None);
+
+        for (int i = 0; i < dongles.Length; i++)
+        {
+            dongles[i].rigid.simulated = false;       
+        }
+
+        //2. 1번의 목록을 하나씩 접근해서 지우기
+        for (int i = 0; i < dongles.Length; i++)
+        {
+            dongles[i].Hide(Vector3.up * 100);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
 }

@@ -1287,7 +1287,7 @@ MonoBehaviour:
   effectPrefab: {fileID: 1831049289276641407, guid: 0c05bc176589ee04390f87ba20ffa708, type: 3}
   effectGroup: {fileID: 1823517692}
   score: 0
-  maxLevel: 2
+  maxLevel: 8
 --- !u!1 &1823517691
 GameObject:
   m_ObjectHideFlags: 0
