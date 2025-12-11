@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
     public Dongle lastDongle;
     public GameObject donglePrefab;
     public Transform dongleGroup;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
 
     void Start()
     {
