@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,8 +31,10 @@ public class GameManager : MonoBehaviour
     int sfxCursor;
 
     [Header("-----------[ UI ]")]
+    public GameObject endGroup;
     public Text scoreText;
     public Text maxScoreText;
+    public Text subScoreText;
 
 
     private void Awake()
@@ -165,9 +168,26 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        //최고 점수 갱신
         int maxScore = Mathf.Max(score, PlayerPrefs.GetInt("MaxScore"));
         PlayerPrefs.SetInt("MaxScore", maxScore);
+        //게임 오버 UI 표시
+        subScoreText.text = "점수 : " + scoreText.text;
+        endGroup.SetActive(true);
+
         SfxPlay(Sfx.Over);
+    }
+
+    public void Reset()
+    {
+        SfxPlay(Sfx.Button);
+        StartCoroutine("ResetCoroutine");
+    }
+
+    IEnumerator ResetCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Main");
     }
 
     public void SfxPlay(Sfx type)
