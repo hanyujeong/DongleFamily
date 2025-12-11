@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("-----------[ UI ]")]
     public Text scoreText;
+    public Text maxScoreText;
 
 
     private void Awake()
@@ -43,6 +44,13 @@ public class GameManager : MonoBehaviour
         {
             MakeDongle();
         }
+
+        if (!PlayerPrefs.HasKey("MaxScore"))
+        {
+            PlayerPrefs.SetInt("MaxScore", 0);
+        }
+
+        maxScoreText.text = PlayerPrefs.GetInt("MaxScore").ToString();
     }
 
 
@@ -156,6 +164,9 @@ public class GameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+
+        int maxScore = Mathf.Max(score, PlayerPrefs.GetInt("MaxScore"));
+        PlayerPrefs.SetInt("MaxScore", maxScore);
         SfxPlay(Sfx.Over);
     }
 
@@ -185,7 +196,7 @@ public class GameManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString();        
     }
 
 
