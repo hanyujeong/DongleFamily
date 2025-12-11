@@ -146,6 +146,7 @@ public class Dongle : MonoBehaviour
 
         anim.SetInteger("Level", level + 1);
         EffectPlay();
+        manager.SfxPlay(GameManager.Sfx.LevelUp);
 
         yield return new WaitForSeconds(0.3f);
         level++;
