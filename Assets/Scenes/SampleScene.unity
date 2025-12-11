@@ -1543,13 +1543,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22366d97368db4e4298032cb17dfbb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  isOver: 0
+  score: 0
+  maxLevel: 8
   donglePrefab: {fileID: 7234091232568909811, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   dongleGroup: {fileID: 2129583830}
   donglePool: []
   effectPrefab: {fileID: 1831049289276641407, guid: 0c05bc176589ee04390f87ba20ffa708, type: 3}
   effectGroup: {fileID: 1823517692}
   effectPool: []
-  poolSize: 10
+  poolSize: 3
   poolCursor: 0
   lastDongle: {fileID: 3839330459726949288, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   bgmPlayer: {fileID: 1774220101}
@@ -1565,9 +1568,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f07ead962d4b7e847bb7ba9976870ce9, type: 3}
   - {fileID: 8300000, guid: f6fa03999a0597a4fa8cdf6619791c13, type: 3}
   - {fileID: 8300000, guid: 7f5efdc907e256345ab7072a2e68f071, type: 3}
-  score: 0
-  maxLevel: 8
-  isOver: 0
 --- !u!1 &1774220099
 GameObject:
   m_ObjectHideFlags: 0

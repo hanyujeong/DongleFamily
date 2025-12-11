@@ -6,6 +6,12 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("-----------[ Core ]")]
+    public bool isOver; 
+    public int score;
+    public int maxLevel;
+
+    [Header("-----------[ Object Pooling ]")]
     public GameObject donglePrefab;
     public Transform dongleGroup;
     public List<Dongle> donglePool;
@@ -17,15 +23,14 @@ public class GameManager : MonoBehaviour
     public int poolCursor;
     public Dongle lastDongle;
 
+    [Header("-----------[ Audio ]")]
     public AudioSource bgmPlayer;
     public AudioSource[] sfxPlayer;
     public AudioClip[] sfxClip;
     public enum Sfx { LevelUp, Next, Attach, Button, Over };
     int sfxCursor;
 
-    public int score;
-    public int maxLevel = 8;
-    public bool isOver;
+   
     private void Awake()
     {
         Application.targetFrameRate = 60;

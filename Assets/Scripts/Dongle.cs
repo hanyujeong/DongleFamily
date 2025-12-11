@@ -48,7 +48,7 @@ public class Dongle : MonoBehaviour
         rigid.angularVelocity = 0;
         circle.enabled = true;
 
-
+        
     }
 
     // ✅ 올바른 Update 메서드 (클래스 내부)
@@ -227,4 +227,6 @@ public class Dongle : MonoBehaviour
         effect.transform.localScale = transform.localScale;
         effect.Play();
     }
+
+    
 }
