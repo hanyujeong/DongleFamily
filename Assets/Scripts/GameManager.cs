@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class GameManager : MonoBehaviour
 {
     [Header("-----------[ Core ]")]
@@ -30,7 +29,10 @@ public class GameManager : MonoBehaviour
     public enum Sfx { LevelUp, Next, Attach, Button, Over };
     int sfxCursor;
 
-   
+    [Header("-----------[ UI ]")]
+    public Text scoreText;
+
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -181,7 +183,10 @@ public class GameManager : MonoBehaviour
         sfxPlayer[sfxCursor].Play();
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
     }
+    private void LateUpdate()
+    {
+        scoreText.text = score.ToString();
+    }
 
-    
 
 }
