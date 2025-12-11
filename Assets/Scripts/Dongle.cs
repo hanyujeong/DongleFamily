@@ -31,6 +31,26 @@ public class Dongle : MonoBehaviour
         anim.SetInteger("Level", level);
     }
 
+    private void OnDisable()
+    {
+        //동글 속성 초기화
+        level = 0;
+        isDrag = false;
+        isMerge = false;
+        isAttach = false;
+        // 동글 트랜스폼 초기화
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        transform.localScale = Vector3.zero;
+
+        //동글 물리 초기화
+        rigid.simulated=false;
+        rigid.angularVelocity = 0;
+        circle.enabled = true;
+
+
+    }
+
     // ✅ 올바른 Update 메서드 (클래스 내부)
     void Update()
     {
