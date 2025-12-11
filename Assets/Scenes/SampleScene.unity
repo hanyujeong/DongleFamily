@@ -911,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 1074728873}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: -11, z: 0}
   m_LocalScale: {x: 10, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1543,11 +1543,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22366d97368db4e4298032cb17dfbb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  lastDongle: {fileID: 3839330459726949288, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   donglePrefab: {fileID: 7234091232568909811, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   dongleGroup: {fileID: 2129583830}
+  donglePool: []
   effectPrefab: {fileID: 1831049289276641407, guid: 0c05bc176589ee04390f87ba20ffa708, type: 3}
   effectGroup: {fileID: 1823517692}
+  effectPool: []
+  poolSize: 10
+  poolCursor: 0
+  lastDongle: {fileID: 3839330459726949288, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   bgmPlayer: {fileID: 1774220101}
   sfxPlayer:
   - {fileID: 2039992833}
