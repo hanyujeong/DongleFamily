@@ -72,11 +72,11 @@ public class GameManager : MonoBehaviour
         startGroup.SetActive(false);
 
         //사운드 플레이
-        bgmPlayer.Play();
-        SfxPlay(Sfx.Button);
+        bgmPlayer.Play();        
+        SfxPlay(Sfx.Button);        
 
         //게임시작(동글생성)
-        Invoke("NextDongle", 1.5f);
+        Invoke("NextDongle", 1f);
         
     }
 
