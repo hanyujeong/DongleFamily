@@ -79,7 +79,9 @@ public class Dongle : MonoBehaviour
                 {//상대방은 숨기기                 
                     other.Hide(transform.position);
                     // 나는 레벨업
+                    LevelUp();
                 }
+               
             }
         }
     }
@@ -108,5 +110,25 @@ public class Dongle : MonoBehaviour
 
         isMerge = false;
         gameObject.SetActive(false);
+    }
+    void LevelUp()
+    {
+        isMerge = true;
+        rigid.angularVelocity = 0;
+
+
+        StartCoroutine(LevelUpRoutine());
+    }
+
+    IEnumerator LevelUpRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        
+        anim.SetInteger("Level", level + 1);
+
+        yield return new WaitForSeconds(0.3f);
+        level++;
+
+        isMerge = false;
     }
 }
