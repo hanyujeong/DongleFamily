@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
 
     void NextDongle()
     {
+        if (isOver)
+        {
+            return;
+        }
+            
         Dongle newDongle = GetDongle();
         lastDongle = newDongle;
         lastDongle.manager = this;
