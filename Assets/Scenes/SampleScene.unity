@@ -1284,6 +1284,7 @@ MonoBehaviour:
   lastDongle: {fileID: 3839330459726949288, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   donglePrefab: {fileID: 7234091232568909811, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   dongleGroup: {fileID: 2129583830}
+  maxLevel: 2
 --- !u!1 &1997957446
 GameObject:
   m_ObjectHideFlags: 0
