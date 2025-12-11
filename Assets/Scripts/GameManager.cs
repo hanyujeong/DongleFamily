@@ -66,7 +66,15 @@ public class GameManager : MonoBehaviour
 
     Dongle GetDongle()
     {
-        return null;
+        for (int i = 0; i < donglePool.Count; i++)
+        {
+            poolCursor = (poolCursor + 1) % donglePool.Count;
+            if (!donglePool[poolCursor].gameObject.activeSelf)
+            {
+                return donglePool[poolCursor];
+            }
+        }            
+            return MakeDongle();
     }
 
     void NextDongle()
