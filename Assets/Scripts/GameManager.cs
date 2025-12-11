@@ -31,10 +31,15 @@ public class GameManager : MonoBehaviour
     int sfxCursor;
 
     [Header("-----------[ UI ]")]
+    public GameObject startGroup;
     public GameObject endGroup;
     public Text scoreText;
     public Text maxScoreText;
     public Text subScoreText;
+
+    [Header("-----------[ ETC ]")]
+    public GameObject line;
+    public GameObject bottom;
 
 
     private void Awake()
@@ -57,10 +62,22 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void Start()
+    public void GameStart()
     {
+        //오브젝트 활성화
+        line.SetActive(true);
+        bottom.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        maxScoreText.gameObject.SetActive(true);
+        startGroup.SetActive(false);
+
+        //사운드 플레이
         bgmPlayer.Play();
-        NextDongle();
+        SfxPlay(Sfx.Button);
+
+        //게임시작(동글생성)
+        Invoke("NextDongle", 1.5f);
+        
     }
 
     Dongle MakeDongle()
@@ -175,6 +192,7 @@ public class GameManager : MonoBehaviour
         subScoreText.text = "점수 : " + scoreText.text;
         endGroup.SetActive(true);
 
+        bgmPlayer.Stop();
         SfxPlay(Sfx.Over);
     }
 
@@ -214,10 +232,17 @@ public class GameManager : MonoBehaviour
         sfxPlayer[sfxCursor].Play();
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
     }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Application.Quit();
+        }
+    }
     private void LateUpdate()
     {
         scoreText.text = score.ToString();        
     }
-
 
 }
