@@ -13,12 +13,16 @@ public class Dongle : MonoBehaviour
     Rigidbody2D rigid;
     CircleCollider2D circle;
     Animator anim;
+    SpriteRenderer spriteRenderer;
+
+    float deadTime;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         circle = GetComponent<CircleCollider2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -83,7 +87,7 @@ public class Dongle : MonoBehaviour
                     // 나는 레벨업
                     LevelUp();
                 }
-               
+
             }
         }
     }
@@ -109,6 +113,8 @@ public class Dongle : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
             yield return null;
         }
+
+        manager.score += (int)Mathf.Pow(2, level);
 
         isMerge = false;
         gameObject.SetActive(false);
@@ -137,6 +143,24 @@ public class Dongle : MonoBehaviour
         isMerge = false;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Finish")
+        {
+            //게임오버
+            deadTime += Time.deltaTime;
+            if (deadTime > 2)
+            {
+                spriteRenderer.color = new Color(0.9f, 0.2f, 0.2f);
+            }
+            if (deadTime > 5)
+            {
+                manager.GameOver();
+            }
+        }
+
+        
+    }
     void EffectPlay()
     {
         effect.transform.position = transform.position;

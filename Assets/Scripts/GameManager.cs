@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject effectPrefab;
     public Transform effectGroup;
 
+    public int score;
     public int maxLevel = 8;
     private void Awake()
     {
@@ -74,4 +75,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void GameOver()
+    {
+        Debug.Log("게임 오버!");
+    }
 }

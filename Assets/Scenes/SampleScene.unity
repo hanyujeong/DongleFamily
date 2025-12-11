@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 835287818}
   m_Layer: 0
   m_Name: Line
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   dongleGroup: {fileID: 2129583830}
   effectPrefab: {fileID: 1831049289276641407, guid: 0c05bc176589ee04390f87ba20ffa708, type: 3}
   effectGroup: {fileID: 1823517692}
+  score: 0
   maxLevel: 2
 --- !u!1 &1823517691
 GameObject:
