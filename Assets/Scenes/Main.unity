@@ -2149,7 +2149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   isOver: 0
   score: 0
-  maxLevel: 8
+  maxLevel: 2
   donglePrefab: {fileID: 7234091232568909811, guid: 02eb3e406ca71fe4b98424529d454e2c, type: 3}
   dongleGroup: {fileID: 2129583830}
   donglePool: []
