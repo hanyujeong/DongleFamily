@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
             
         Dongle newDongle = GetDongle();
         lastDongle = newDongle;        
-        lastDongle.level = Random.Range(0, maxLevel);
+        lastDongle.level = Random.Range(0, 3);
         lastDongle.gameObject.SetActive(true);
 
         SfxPlay(Sfx.Next);
@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
         }
 
         //2. 1번의 목록을 하나씩 접근해서 지우기
-        for (int i = 0; i < dongles.Length; i++)
+        for (int i = dongles.Length - 1; i < 0; --i)
         {
             dongles[i].Hide(Vector3.up * 100);
             yield return new WaitForSeconds(0.1f);
